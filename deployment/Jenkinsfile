@@ -51,7 +51,7 @@ pipeline {
     	success {
     	
     		jacoco(
-                	classPattern:'**/target/classes/com/app',
+                	classPattern:'**/target/classes',
                 	sourcePattern:'**/src/main'
                 	)
             junit '**/target/surefire-reports/TEST-*.xml'
