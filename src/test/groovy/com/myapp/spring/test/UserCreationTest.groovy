@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.test.web.servlet.MockMvc
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.myapp.spring.domain.Course
 import com.myapp.spring.domain.User
 import com.myapp.spring.service.UserServiceLayer
 
