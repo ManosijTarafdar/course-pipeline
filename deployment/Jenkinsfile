@@ -43,6 +43,18 @@ pipeline {
                  	}
                  }
             }
+            stage('Publish Artifactory') {
+				steps {
+					script {
+						if(isUnix()) {
+							sh "mvn -Dmaven.test.failure.ignore=true deploy"
+               			}    
+						else {
+							bat "mvn -Dmaven.test.failure.ignore=true deploy"
+						}
+					}
+				}
+			}
         
     	}
     }

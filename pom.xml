@@ -16,6 +16,13 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+	<distributionManagement>
+    	<repository>
+        	<id>central</id>
+        	<name>IBM-PF32HJVA-releases</name>
+        	<url>https://localhost:8081/artifactory/libs-release-local</url>
+    	</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
