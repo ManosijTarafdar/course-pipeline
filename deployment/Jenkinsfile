@@ -1,0 +1,63 @@
+pipeline {
+
+    agent any
+
+    tools {
+    
+        maven "mvn"
+    }
+
+    stages {
+    
+        stage('Build') {
+        
+            steps {
+            
+                git url: 'https://github.com/ManosijTarafdar/devops-spring-groovy-pipeline.git'
+                
+                script {
+                	if( isUnix() ) {
+                		
+                		sh "mvn -Dmaven.test.failure.ignore=true clean package"
+					}	
+                	else {
+                	
+                 		bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                 	}
+                 }
+            }
+        }
+        stage('Integration Test') {
+        
+        	steps {
+        	
+                script {
+                
+                	if( isUnix() ) {
+                	
+                		sh "mvn -Dmaven.test.failure.ignore=true clean verify"
+					}	
+                	else {
+                	
+                 		bat "mvn -Dmaven.test.failure.ignore=true clean verify"
+                 	}
+                 }
+            }
+        
+    	}
+    }
+    post {
+    	
+    	success {
+    	
+    		jacoco(
+                	classPattern:'**/target/classes/com/app',
+                	sourcePattern:'**/src/main'
+                	)
+            junit '**/target/surefire-reports/TEST-*.xml'
+            archiveArtifacts 'target/*.jar'
+         }
+    }
+            
+        
+}
