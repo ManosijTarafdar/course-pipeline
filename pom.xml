@@ -20,12 +20,12 @@
     	<repository>
         	<id>central</id>
         	<name>IBM-PF32HJVA-releases</name>
-        	<url>https://localhost:8081/artifactory/libs-release-local</url>
+        	<url>http://localhost:8081/artifactory/libs-release-local</url>
     	</repository>
     	<snapshotRepository>
         	<id>snapshots</id>
         	<name>IBM-PF32HJVA-snapshots</name>
-        	<url>https://localhost:8081/artifactory/libs-snapshot-local</url>
+        	<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
     	</snapshotRepository>
 	</distributionManagement>
 	<dependencies>
@@ -229,13 +229,10 @@
 				</executions>
 				<configuration>
 				<excludes>
-				<exclude>com/eldisol/jacoboot/JacobootApplication.class</exclude>
-
-</excludes>
-
-</configuration>
-
-</plugin>
+					<exclude>com/eldisol/jacoboot/JacobootApplication.class</exclude>
+				</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
