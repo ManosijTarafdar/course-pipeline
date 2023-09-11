@@ -43,7 +43,8 @@ pipeline {
                  	}
                  }
             }
-            stage('Publish Artifactory') {
+         }
+         stage('Publish Artifactory') {
 				steps {
 					script {
 						if(isUnix()) {
@@ -55,8 +56,6 @@ pipeline {
 					}
 				}
 			}
-        
-    	}
     }
     post {
     	
