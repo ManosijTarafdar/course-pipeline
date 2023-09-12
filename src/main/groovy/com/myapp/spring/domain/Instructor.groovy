@@ -9,14 +9,9 @@ class Instructor {
 	@Id
 	String id
 	
-	String userName
+	String instructorId
 	
 	String password
 	
-	String instructorId
-	
-	String firstName
-	
-	String lastName
-	
+	List<String> instructedCourses
 }
