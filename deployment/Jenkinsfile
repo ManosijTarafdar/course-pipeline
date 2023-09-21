@@ -66,6 +66,7 @@ pipeline {
 						bat "mvn -Dmaven.test.failure.ignore=true deploy"
 					}
 				}
+			  }
 			}
 			stage('Build Docker Image') {
 				steps {
@@ -121,7 +122,6 @@ pipeline {
   			 }
 		}
 			
-    }
     post {
     	
     	success {
