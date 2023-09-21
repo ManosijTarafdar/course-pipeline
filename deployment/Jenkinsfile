@@ -67,6 +67,58 @@ pipeline {
 					}
 				}
 			}
+			stage('Build Docker Image') {
+				steps {
+					script {
+						if (isUnix()) {
+							sh "mvn -Dmaven.test.failure.ignore=true spring-boot:build-image"
+               			}    
+						else {
+							bat "mvn -Dmaven.test.failure.ignore=true spring-boot:build-image"
+						}
+					}
+				}
+
+   			}
+   			stage('Load Docker Image') {
+				steps {
+					script {
+						if (isUnix()) {
+							sh "minikube image load my-courseapi-image"
+               			}    
+						else {
+							bat "minikube image load my-courseapi-image"
+						}
+					}
+				}
+
+   			}
+   			stage('Kubernetes Deploy') {
+				steps {
+					script {
+						if(isUnix()) {
+							sh "kubectl apply -f k8s/deployment.yml"
+               			}    
+						else {
+							bat "kubectl apply -f k8s/deployment.yml"
+						}
+					}
+				}
+
+   			}
+   			stage('Kubernetes Service') {
+				steps {
+					script {
+						if(isUnix()) {
+							sh "kubectl apply -f k8s/service.yml"
+               			}    
+						else {
+							bat "kubectl apply -f k8s/service.yml"
+						}
+					}
+				}
+
+  			 }
 		}
 			
     }

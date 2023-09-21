@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  groovy-app:
+   image: manosij1999/devops-spring-course-app
+   volumes:
+   - app-data:/var/bin
+   ports:
+   - 5000:8888
+  mongodb:
+   
+volumes:
+ app-data:
